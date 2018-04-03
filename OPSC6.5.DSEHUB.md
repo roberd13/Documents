@@ -100,11 +100,8 @@ To exit the shell without stopping the container use *`ctl P ctl Q`*
 
 Use the Docker images maintained by [DataStax](https://www.datastax.com/):
 
-* Docker Store (Login to docker store and subscribe to the image):
-
- * [DataStax Enterprise](https://hub.docker.com/r/datastax/dse-server): The best distribution of Apache Cassandra™ with integrated Search, Analytics, Graph, and Advanced Security.
-
 * Docker Hub:
+ * [DataStax Enterprise](https://hub.docker.com/r/datastax/dse-server): The best distribution of Apache Cassandra™ with integrated Search, Analytics, Graph, and Advanced Security.
  * [DataStax Studio](https://hub.docker.com/r/datastax/dse-studio/): An interactive developer’s tool for DataStax Enterprise which is designed to help your DSE database, Cassandra Query Language (CQL), DSE Graph, and Gremlin Query Language development.
  * [DataStax OpsCenter](https://hub.docker.com/r/datastax/dse-opscenter/): The web-based visual management and monitoring solution for DataStax Enterprise (DSE)
 
