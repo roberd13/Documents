@@ -391,12 +391,14 @@ File an [issue](https://github.com/datastax/docker-images/issues) or email us at
 
 * CFS is not supported
 * Changing any file not included in the list of approved configuration files will require an additional host volume or customization of the image. An example is SSL key management.
-
+* You must must set JVM heap size for DSE running inside the container due to java not honoring resource limits set for the container.  Java looks through the container and utilizes the resources (memory and CPU) of the host. 
 
 
 # License
 
 Use the following links to review the license:
 
-* [OpsCenter License Terms](https://www.datastax.com/datastax-opscenter-license-terms)
 * [DataStax License Terms](https://www.datastax.com/terms)
+* [OpsCenter License Terms](https://www.datastax.com/datastax-opscenter-license-terms)
+* [Studio License Terms](https://www.datastax.com/terms/datastax-studio-license-terms)
+
