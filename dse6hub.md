@@ -28,13 +28,14 @@ and monitoring into a single unified platform. We power your
 apps' real-time moments so you can create instant insights 
 and powerful customer experiences.
 
+# Getting Started with DataStax and Docker
 
+DataStax Docker images are licensed only for Development purposes in non-production environments. You can use these images to learn DSE, OpsCenter and DataStax Studio, to try new ideas, to test and demonstrate your application.
 
 * Docker Hub:
    * [DataStax Studio](https://hub.docker.com/r/datastax/dse-server/): The best distribution of Apache Cassandra™ with integrated Search, Analytics, Graph, and Advanced Security. 
    * [DataStax Studio](https://hub.docker.com/r/datastax/dse-studio/): An interactive developer’s tool for DataStax Enterprise which is designed to help your DSE database, Cassandra Query Language (CQL), DSE Graph, and Gremlin Query Language development.
    * [DataStax OpsCenter](https://hub.docker.com/r/datastax/dse-opscenter/): The web-based visual management and monitoring solution for DataStax Enterprise (DSE).
-
 
 
 # Prerequisites
@@ -115,6 +116,8 @@ Manage the DSE configuration using one of the following options:
 * Docker file/directory volume mounts
 
 * Docker overlay file system
+
+* DSE uses the default values defined for the environment variables unless explicitly set at run time. **NOTE** Custom config files will override the default or explicitly set environment variables. 
 
 ### Using the DSE conf volume
 
@@ -261,7 +264,7 @@ docker logs my-dse
 
 ## Using DSE tools
 
-Use` docker exec` to run other tools. 
+Use `docker exec` to run other tools. 
 
 **For example**
 
@@ -283,21 +286,21 @@ To create and connect the containers:
 
 1. First create an OpsCenter container.
 
- ```
+```
 docker run -e DS_LICENSE=accept -d -p 8888:8888 --name my-opscenter datastax/dse-opscenter
 ```
 See [OpsCenter Docker run options](#OpsCenter-Docker-run-options) for additional options that persist data or manage configuration.
 
 2. Create a [DataStax Enterprise (DSE) server](https://hub.docker.com/r/datastax/dse-server) container that is linked to the OpsCenter container. 
 
- ```
+```
 docker run -e DS_LICENSE=accept --link my-opscenter:opscenter --name my-dse -d datastax/dse-server
 ```
 
 3. Get the DSE container IP address:
 
  
- ```
+```
 docker inspect my-dse | grep IPAddress
 ```
 
