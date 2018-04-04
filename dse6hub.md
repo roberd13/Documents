@@ -9,10 +9,6 @@
    * [Volumes and Data](#volumes-and-data)
    * [Exposing DSE public ports](#exposing-dse-public-ports)
 * [Running DSE Commands and Viewing Logs](#running-dse-commands-and-viewing-logs)
-* [Creating an OpsCenter Container](#creating-an-opscenter-container)
-* [Creating a Studio Container](#creating-a-studio-container)
-* [Using Docker Compose for Automated Provisioning](#using-docker-compose-for-automated-provisioning)
-* [Building](#building)
 * [Getting Help](#getting-help)
 * [Licensing](#license)
 
@@ -276,103 +272,6 @@ docker exec -it my-dse nodetool status
 
 See [DSE documentation](http://docs.datastax.com/en/dse/6.0/dse-admin/) for further info on usage/configuration 
 
-
-
-# Creating an OpsCenter container
-
-Follow these steps to create an Opscenter container and a connected DataStax Enterprise server container on the same Docker host. 
-
-To create and connect the containers:
-
-1. First create an OpsCenter container.
-
-```
-docker run -e DS_LICENSE=accept -d -p 8888:8888 --name my-opscenter datastax/dse-opscenter
-```
-See [OpsCenter Docker run options](#OpsCenter-Docker-run-options) for additional options that persist data or manage configuration.
-
-2. Create a [DataStax Enterprise (DSE) server](https://hub.docker.com/r/datastax/dse-server) container that is linked to the OpsCenter container. 
-
-```
-docker run -e DS_LICENSE=accept --link my-opscenter:opscenter --name my-dse -d datastax/dse-server
-```
-
-3. Get the DSE container IP address:
-
- 
-```
-docker inspect my-dse | grep IPAddress
-```
-
-5. Open a browser and go to `http://DOCKER_HOST_IP:8888`.
-6. Click `Manage existing cluster`. 
-7. In `host name`, enter the DSE IP address.
-8. Click `Install agents manually`. Note that the agent is already installed on the DSE image; no installation is required.
-
-OpsCenter is ready to use with DSE. See the [OpsCenter User Guide](http://docs.datastax.com/en/opscenter/6.5/) for detailed usage and configuration instructions.
-
-# Creating a Studio container
-
-1. Create a Studio container:
-
-```
-docker run -e DS_LICENSE=accept --link my-dse --name my-studio -p 9091:9091 -d datastax/dse-studio
-```
-
-2. Open your browser and point to `http://DOCKER_HOST_IP:9091`, create the new connection using my-dse as the hostname. 
-
-Check [Studio documentation](http://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/studio/stdToc.html) for further instructions.
-
-
-
-# Using Docker compose for automated provisioning
-
-Bootstrapping a multi-node cluster with OpsCenter and Studio can be elegantly automated with [Docker Compose](https://docs.docker.com/compose/). To get sample `compose.yml` files visit the following links.  
-
-* [DSE](https://github.com/datastax/docker-images/blob/master/docker-compose.yml)  
-
-* [OpsCenter](https://github.com/datastax/docker-images/blob/master/docker-compose.opscenter.yml)  
-
-* [Studio](https://github.com/datastax/docker-images/blob/master/docker-compose.studio.yml)
-
-
-**3-Node Setup**
-
-```
-docker-compose  -f docker-compose.yml up -d --scale node=2
-```
-
-**3-Node Setup with OpsCenter**
-
-```
-docker-compose -f docker-compose.yml -f docker-compose.opscenter.yml up -d --scale node=2
-```
-
-**3-Node Setup with OpsCenter and Studio**
-
-```
-docker-compose -f docker-compose.yml -f docker-compose.opscenter.yml -f docker-compose.studio.yml up -d --scale node=2
-```
-
-**Single Node Setup with Studio**
-
-```
-docker-compose -f docker-compose.yml -f docker-compose.studio.yml up -d --scale node=0
-```
-
-# Building
-
-The code in this repository will build the images listed above. To build all of them please run the following commands:
-
-```console
-./gradlew buildImages -PdownloadUsername=<your_DataStax_Acedemy_username> -PdownloadPassword=<your_DataStax_Acedemy_passwd>
-```
-
-By default, [Gradle](https://gradle.org) will download DataStax tarballs from [DataStax Academy](https://downloads.datastax.com).
-Therefore you need to provide your credentials either via the command line, or in `gradle.properties` file located
-in the project root.
-
-Run `./gradlew tasks` to get the list of all available tasks.
 
 # Getting help
 
