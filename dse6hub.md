@@ -156,7 +156,7 @@ Variable | Setting        | Description
 `SEEDS` | *IP_address* | The comma-delimited list of seed nodes for the cluster. Defaults to this node's `BROADCAST_ADDRESS`. 
 `START_RPC` | `true` \| `false` | Whether or not to start the Thrift RPC server. Will leave the default in the `cassandra.yaml` file if not set.
 `CLUSTER_NAME` | *string* | The name of the cluster. Default: `Test Cluster`.
-`NUM_TOKENS`|*int*|The number of tokens randomly assigned to the node. Default: `8`.
+`NUM_TOKENS`|*int*|The number of tokens randomly assigned to the node. Default: not set .
 `DC` | *string* | Datacenter name. Default: `Cassandra`.
 `RACK` | *string* | Rack name. Default: `rack1`.
 `OPSCENTER_IP` | *IP_address* \| *string* | Address of OpsCenter instance to use for DSE management; it can be specified via linking the OpsCenter container using opscenter as the name.
