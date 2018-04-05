@@ -75,7 +75,20 @@ The file name must match a corresponding configuration file in the image and inc
 ```
 docker run -e DS_LICENSE=accept -d -v /dse/conf/opscenter:/config datastax/dse-opscenter --name my-opscenter
 ```
+### Persisting data
 
+Opscenter metrics are stored in the OpsCenter keyspace in DSE.
+
+To persist a configuration file:
+
+For example to mount the `opscenterd.conf`
+
+1. Create a directory on the Docker host. 
+
+2. Bind mount the local directory to the config file you want to persist by starting the container with the `-v` flag.
+```
+docker run -e DS_LICENSE=accept -d -v /dse/data/opscenter:/opt/opscenter/conf/opscenterd.conf datastax/dse-opscenter --name my-opscenter
+```
 
 # Attaching to a container
 
