@@ -115,6 +115,8 @@ Manage the DSE configuration using one of the following options:
 
 * DSE uses the default values defined for the environment variables unless explicitly set at run time. **NOTE** Custom config files will override the default or explicitly set environment variables. 
 
+* **NOTE** When using memory resource contraints, you must must set JVM heap size using the environment variable `JVM_EXTRA_OPTS` or custom `cassandra-env.sh` for DSE running inside the container due to java not honoring resource limits set for the container. Java looks through the container and utilizes the resources (memory and CPU) of the host.
+
 ### Using the DSE conf volume
 
 DataStax provided Docker images include a start up script that swaps DSE configuration files found in the Volume `/config` with the configuration file in the default location on the container. 
