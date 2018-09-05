@@ -16,6 +16,8 @@ https://github.com/datastax/docker-images/issues
 ### Maintained by 
 [DataStax](https://www.datastax.com/) 
 
+
+
 # What is DataStax Enterprise
 
 Built on the best distribution of Apache Cassandra™, DataStax Enterprise is the always-on database designed to allow you to effortlessly build and scale your apps, integrating graph, search, analytics, administration, developer tooling, and monitoring into a single unified platform. We power your apps' real-time moments so you can create instant insights and powerful customer experiences.
