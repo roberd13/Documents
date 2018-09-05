@@ -71,7 +71,7 @@ docker run -e DS_LICENSE=accept --name my-dse -d datastax/dse-server -s
 
 Manage the DSE configuration using one of the following options:  
 
-* [DSE configuration volume](#using-the-dse-conf-volume) use configuration files from a mounted host directory without replacing or customizing the containers. 
+* [DSE configuration volume](https://docs.datastax.com/en/docker/doc/docker/docker60/dockerDSEVolumes.html) use configuration files from a mounted host directory without replacing or customizing the containers. 
 
 * [DSE environment variables](#using-environment-variables) that change the configuration at runtime. 
 
@@ -79,9 +79,9 @@ Manage the DSE configuration using one of the following options:
 
 * Docker overlay file system
 
-* DSE uses the default values defined for the environment variables unless explicitly set at run time. **NOTE** Custom config files will override the default or explicitly set environment variables. 
+* DSE uses the default values defined for the environment variables unless explicitly set at run time.  
 
-* **NOTE** When using memory resource contraints, you must must set JVM heap size using the environment variable `JVM_EXTRA_OPTS` or custom `cassandra-env.sh` for DSE running inside the container due to java not honoring resource limits set for the container. Java looks through the container and utilizes the resources (memory and CPU) of the host.
+* **NOTE** When using memory resource contraints, you must must set JVM heap size using the environment variable `JVM_EXTRA_OPTS` or custom `cassandra-env.sh` for DSE running inside the container due to java not honoring resource limits set for the container. Java looks through the container and utilizes the resources (memory and CPU) of the host. Otherwise DSE will set the heap to 1/4 of the physical ram of the docker host.
 
 
 
@@ -154,8 +154,6 @@ Use the following command to open cqlsh.
 docker exec -it <container_name> cqlsh
 ```
 
-To exit the shell without stopping the container use *`ctl P ctl Q`*
-
 
 ## Viewing logs
 
@@ -179,7 +177,5 @@ Head over to [DataStax Academy](https://academy.datastax.com/quick-downloads?utm
 * How to build applications using Apache Cassandra™/ DataStax
 
 # License
-
-Use the following links to review the license:
 
 * [DataStax License Terms](https://www.datastax.com/terms)
