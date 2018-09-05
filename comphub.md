@@ -27,21 +27,6 @@ Built on the best distribution of Apache Cassandra™, DataStax Enterprise is th
 
 Use the options described in this section to create DataStax Enterprise server containers. 
 
-## Docker run options
-Use the following options to set up a DataStax Enterprise server container. 
-
-Option | Description
-------------- | -------------
-`-e` | (**Required**) Sets [Environment variables](#using-environment-variables) to accept the licensing agreement and <BR> (optional) change the initial configuration.
-`-d` | (Recommended) Starts the container in the background.
-`-p` | Publish container ports on the host computer to allow remote access to DSE, OpsCenter, and Studio. See [Exposing DSE public ports](#exposing-public-ports)
-`-v` | Bind mount a directory on the local host to a DSE Volume to manage configuration or preserve data. See [Volumes and data](#volumes-and-data). 
-`--link` | Link DSE container to OpsCenter or Studio to DSE. For example, `--link my-opscenter:opscenter` or `--link my-dse`.
-`--name` |Assigns a name to the container.
-
-These are the most commonly used `docker run` switches used in deploying DSE.  For a full list please see [docker run](https://docs.docker.com/engine/reference/commandline/run/) reference.
-
-## Enabling advanced functionality
 
 By default, the DSE server image is set up as a transactional (database) node.
 To set up the node with DSE advanced functionality, add the option that enables feature to the end of the `docker run` command.
@@ -138,19 +123,6 @@ DSE images expose the following volumes.
    * `/var/lib/dsefs`: Data from DSEFS
    * `/var/log/cassandra`: Logs from Cassandra
    * `/var/log/spark`: Logs from Spark
-   * `/config`: Directory to add custom config files for the container to pickup.
-
-
-### Preserving data
-To persist data, pre-create directories on the local host and map the directory to the corresponding volume using the docker run `-v` flag. 
-
-**NOTE:** If the volumes are not mounted from the local host, all data is lost when the container is removed.
-
-* DSE Transactional, Search, Graph, and Analytics nodes:
-   * `/var/lib/cassandra/data`  
-   * `/var/lib/cassandra/commit_logs` 
-   * `/var/lib/cassandra/saved_caches`
-
 
 ```
 docker run -v <local_directory>:<container_volume>
