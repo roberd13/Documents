@@ -65,7 +65,7 @@ OpsCenter is ready to use with DSE. See the [OpsCenter User Guide](http://docs.d
 
 ## Managing the configuration
 
-Manage the Studio configuration using one of the following options:  
+Manage Opscenters configuration using one of the following options:  
 
 * [DSE configuration volume](https://docs.datastax.com/en/docker/doc/docker/docker60/dockerDSEVolumes.html) For configuration management, we’re providing a simple mechanism to let you provide custom configuration file(s) without customizing the containers or over using host volumes. You can add any of the [approved config files](https://github.com/datastax/docker-images/tree/master/config-templates) to a single mounted host volume and we’ll handle the hard work of mapping them within the container.
 
