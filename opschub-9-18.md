@@ -121,5 +121,6 @@ Head over to [DataStax Academy](https://academy.datastax.com/quick-downloads?utm
 
 # Licensing
 Use the following links to review the license:
+
 [OpsCenter License Terms](https://www.datastax.com/datastax-opscenter-license-terms)
 [DataStax License Terms](https://www.datastax.com/terms)
