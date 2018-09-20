@@ -32,7 +32,7 @@ DataStax Studio is an interactive tool for CQL (Cassandra Query Language) and [D
 
 DataStax Docker images are licensed only for Development purposes in non-production environments. You can use these images to learn [DSE](https://hub.docker.com/r/datastax/dse-server), [OpsCenter](https://hub.docker.com/r/datastax/dse-opscenter) and [DataStax Studio](https://hub.docker.com/r/datastax/dse-studio), to try new ideas, to test and demonstrate your application.
 
-## Creating a container
+## Creating a Studio Container
 Follow these steps to create a DataStax Studio container that is connected to a [DataStax Enterprise (DSE) server](https://hub.docker.com/r/datastax/dse-server) container on the same Docker host.
 
 To create and connect the containers:
@@ -85,6 +85,14 @@ docker exec -it <container_name> bash
 ```
 
 To exit the shell without stopping the container type exit.
+
+## Viewing logs
+
+You can view the DSE logs using the Docker log command. For example:
+
+```
+docker logs my-studio
+```
 
 # Next Steps
 
