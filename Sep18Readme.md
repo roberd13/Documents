@@ -1,19 +1,14 @@
 # Contents
-* [DataStax Platform Overview](#datastax-platform-overview)
-* [Getting Started with DataStax and Docker](#getting-started-with-datastax-and-docker)
+* [Quick Reference](#quick-reference)
 * [Prerequisites](#prerequisites)
 * [Creating a DataStax Enterprise Container](#creating-a-datastax-enterprise-container)
-   * [Enabling advanced features](#enabling-advanced-functionality)
    * [Container examples](#examples)
    * [Managing the configuration](#managing-the-configuration)
    * [Volumes and Data](#volumes-and-data)
-   * [Exposing DSE public ports](#exposing-dse-public-ports)
 * [Running DSE Commands and Viewing Logs](#running-dse-commands-and-viewing-logs)
 * [Creating an OpsCenter Container](#creating-an-opscenter-container)
 * [Creating a Studio Container](#creating-a-studio-container)
-* [Using Docker Compose for Automated Provisioning](#using-docker-compose-for-automated-provisioning)
 * [Building](#building)
-* [Getting Help](#getting-help)
 * [Licensing](#license)
 
 # Quick Reference 
