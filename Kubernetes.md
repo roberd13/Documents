@@ -72,7 +72,7 @@ The following table lists the configurable parameters of the DataStax-DSE chart 
 | `tolerations`                   | Initdb Arguments                          |  ``    |
 | `affinity`                   | Initdb Arguments                          |  ``    |
 
-### `Specify each parameter using the --set key=value[,key=value] argument to helm install.`
+### Specify each parameter using the --set key=value,key=value argument to helm install.
 
 ## Scale Your DSE Cluster
 When you want to scale the size of your DSE cluster, you would use the helm upgrade command
