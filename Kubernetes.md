@@ -38,26 +38,26 @@ The following table lists the configurable parameters of the DataStax-DSE chart 
 | `image.tag`                          | `dse` docker image tag   | `6.0.4`   |
 | `image.args`                   | Image pull policy                          |  `IfNotPresent`    |
 | `image.args`                  | Workload to deploy  not set = `cassandra`, analytics = `-k`, search = `-s`, graph =`-g`  | `not set`   |
-| `service.ports`                   | Initdb Arguments                                | `9042`                                                     |
-| `cassandra.num_tokens`                  | Initdb Arguments                                | `32`                                                      |
+| `service.ports`                   | Native Transport Port                                | `9042`                                                     |
+| `cassandra.num_tokens`                  | (Vnodes) Number of token ranges to assign per node | `32`                                                      |
 | `cassandra.seeds`                   | The number of seed nodes used to bootstrap new clients joining the cluster.                            | `2` |
 | `cassandra.replicas`                | The number of nodes in the cluster.             | `3`                                                        |
 | `cassandra.cluster_name`                | The name of the cluster.                        | `DSE Cluster`                                                |
 | `cassandra.dc`                     | DC Name                                | `DC1`                                                      |
-| `cassandra.rack`                   | Rack                                | `RACK1`                                                     |
-| `cassandra.concurrent_compactors`             | Initdb Arguments                                | `2`                                             |
-| `cassandra.compaction_throughput_mb_per_sec`               | Initdb Arguments                                | `16`                                                    |
-| `cassandra. memtable_allocation_type `   | Initdb Arguments                                | ``heap_buffers`                                                     |
-| `cassandra.memtable_cleanup_threshold`               | Initdb Arguments                                | `0.40`                                                     |
-| `cassandra.memtable_flush_writers`                 | Initdb Arguments              | `2`                                                      |
-| `cassandra.memtable_heap_space_in_mb`                   | Initdb Arguments                                | `512`                                                    |
-| `cassandra.memtable_offheap_space_in_mb`                    | Initdb Arguments   | `512`                                                       |
-| `cassandra.stream_throughput_outbound_megabits_per_sec`                   | Initdb Arguments                 | `200`                                                       |
-| `cassandra.inter_dc_stream_throughput_outbound_megabits_per_sec`                      | Initdb Arguments                    | `200`                                                       |
-| `cassandra.phi_convict_threshold`                                | Initdb Arguments                             | `8`|
+| `cassandra.rack`                   | Rack Name                                | `RACK1`                                                     |
+| `cassandra.concurrent_compactors`             | The number of concurrent compaction processes allowed to run simultaneously on a node.                                | `2`                                             |
+| `cassandra.compaction_throughput_mb_per_sec`               | Throttles compaction to the specified Mb/second.                                | `16`                                                    |
+| `cassandra. memtable_allocation_type `   | The method Cassandra uses to allocate and manage memtable memory.                                | ``heap_buffers`                                                     |
+| `cassandra.memtable_cleanup_threshold     | Ratio used for automatic memtable flush                                | `0.40`                                                     |
+| `cassandra.memtable_flush_writers`                 | The number of memtable flush writer threads              | `2`                                                      |
+| `cassandra.memtable_heap_space_in_mb`                   | The amount of on-heap memory allocated for memtables                               | `512`                                                    |
+| `cassandra.memtable_offheap_space_in_mb`                    | Total amount of off-heap memory allocated for memtables   | `512`                                                       |
+| `cassandra.stream_throughput_outbound_megabits_per_sec`                   | Throttle for the throughput of all outbound streaming file transfers on a node  | `200`                                                       |
+| `cassandra.inter_dc_stream_throughput_outbound_megabits_per_sec`                      | Throttle for all streaming file transfers between datacenters | `200`                                                       |
+| `cassandra.phi_convict_threshold`        | Adjusts the sensitivity of the failure detector on an exponential scale. | `8`|
 | `cassandra.jvm.heap_size`                   | DSE heap size                         |  `2G`    |
 | `dse.max_solr_concurrent_per_core`                   | Initdb Arguments                          |  `2`    |
-| `dse.back_pressure_threshold_per_core`                   | Initdb Arguments                          |  `1000`    |
+| `dse.back_pressure_threshold_per_core`                   | The maximum number of queued partitions during search index rebuilding and reindexing                          |  `1000`    |
 | `storage.cassandra.data.size`                   | Initdb Arguments                         |  `15Gi`    |
 | `storage.cassandra.logs.enable`                   | Initdb Arguments                          |  `false`    |
 | `storage.cassandra.logs.size`                   | Initdb Arguments                          |  `10Gi`    |
@@ -66,8 +66,8 @@ The following table lists the configurable parameters of the DataStax-DSE chart 
 | `storage.spark.logs.size`                   | Initdb Arguments                          |  `10Gi`    |
 | `storage.dsefs.enable`                   | Initdb Arguments                          |  `false`    |
 | `storage.dsefs.size`                   | Initdb Arguments                          |  `10Gi`    |
-| `resources.cpu`                   | Initdb Arguments                          |  `1000m`    |
-| `resources.mem`                   | Ram to allocate to container                          |  `4Gi`    |
+| `resources.cpu`                   | CPU allocated to the Container                          |  `1000m`    |
+| `resources.mem`                   | Memory allocated to the Container                          |  `4Gi`    |
 | `nodeSelector`                   | Initdb Arguments                          |  ``    |
 | `tolerations`                   | Initdb Arguments                          |  ``    |
 | `affinity`                   | Initdb Arguments                          |  ``    |
